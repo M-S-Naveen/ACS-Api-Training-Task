@@ -8,10 +8,10 @@
   </head>
   <body>
     <script>
-      function retrieve() {
+      function viewIt() {
         return JSON.parse(sessionStorage.getItem("item"));
       }
-      var id = retrieve();
+      var id =viewIt();
 
       async function apiCall() {
         let response = await fetch(

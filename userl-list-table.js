@@ -83,7 +83,7 @@ async function deleteData(id) {
       .then((res) => alert("user data deleted"));
   }
 }
-
+//above code is to delete the user data and show it in alert
 const item = [];
 function viewUser(input) {
   console.log(input);

@@ -139,6 +139,7 @@
       </div>
     </div>
     <script>
+      //This code joins first and last name into full name
       const firstNameInput = document.getElementById("firstName");
       const lastNameInput = document.getElementById("lastName");
       const fullNameInput = document.getElementById("fullName");
@@ -154,7 +155,7 @@
 
       firstNameInput.addEventListener("input", updateFullName);
       lastNameInput.addEventListener("input", updateFullName);
-
+     // following code is to update the user data
       function retrieve() {
         return JSON.parse(sessionStorage.getItem("storedItem"));
       }

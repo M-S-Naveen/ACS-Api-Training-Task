@@ -1,3 +1,4 @@
+// code for adding new users via add-user.html
 var butn = document.getElementById('button');
 var data = {};
 butn.addEventListener("click", async function(){
