@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>edit user</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    />
+    <style>
+      @font-face {
+        font-family: Inter;
+        src: url(Inter-VariableFont_slnt\wght.ttf);
+      }
+      body {
+        font-family: Inter;
+      }
+      .second {
+        background-color: #f5f5f5;
+      }
+      .form {
+        background-color: #ffffff;
+      }
+      .fw-bold {
+        font-size: 20px;
+      }
+      .list-button {
+        width: 100%;
+        color: #ffffff;
+        margin-top: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2 vh-100 bg-dark">
+          <div>
+            <button
+              class="list-button btn btn-secondary fw-bold text-left"
+              disabled="disabled"
+            >
+              User List
+            </button>
+          </div>
+        </div>
+        <div class="col-10 second">
+          <br />
+          <div class="mx-4">
+            <a
+              href="user-list-table.html"
+              class="float-end btn btn-primary px-5 mx-4 back"
+              >Back</a
+            >
+            <br />
+            <p class="fw-bold">Add User</p>
+          </div>
+          <div>
+            <form class="mx-4 form">
+              <fieldset class="my-3">
+                <label class="form-label mx-4" for="firstName"
+                  >First Name
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    placeholder="First Name"
+                    name="firstName"
+                /></label>
+                <label class="form-label" for="lastName"
+                  >Last Name
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    placeholder="Last Name"
+                    name="lastNname"
+                /></label>
+              </fieldset>
+              <fieldset class="mt-3">
+                <label class="form-label mx-4" for="fullName"
+                  >Full Name
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="fullName"
+                    placeholder="Full Name"
+                    name="fullName"
+                    disabled
+                /></label>
+                <label class="form-label" for="gender"
+                  >Gender
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="gender"
+                    placeholder="Phone Number"
+                    required
+                /></label>
+                <p class="text-secondary mt-0 mx-4">
+                  A block of help text that breaks onto a new line and beyond
+                  one line.
+                </p>
+              </fieldset>
+              <fieldset class="mb-3">
+                <label class="form-label mx-4" for="email"
+                  >Email
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email"
+                    id="email"
+                    required
+                /></label>
+                <label class="form-label" for="status"
+                  >Status
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="status"
+                    placeholder="Status"
+                    required
+                /></label>
+                <br />
+                <button
+                  type="submit"
+                  class="btn btn-primary px-5 mx-4 mb-4 float-end"
+                  id="btn"
+                >
+                  Update Parameter
+                </button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const firstNameInput = document.getElementById("firstName");
+      const lastNameInput = document.getElementById("lastName");
+      const fullNameInput = document.getElementById("fullName");
+      var btn = document.getElementById("btn");
+      var data = {};
+
+      function updateFullName() {
+        const firstName = firstNameInput.value;
+        const lastName = lastNameInput.value;
+        const fullName = firstName + " " + lastName;
+        fullNameInput.value = fullName;
+      }
+
+      firstNameInput.addEventListener("input", updateFullName);
+      lastNameInput.addEventListener("input", updateFullName);
+
+      function retrieve() {
+        return JSON.parse(sessionStorage.getItem("storedItem"));
+      }
+      var id = retrieve();
+      btn.addEventListener("click", function () {
+        console.log("hello");
+        data.name = document.getElementById("fullName").value;
+        data.gender = document.getElementById("gender").value;
+        data.email = document.getElementById("email").value;
+        data.status = document.getElementById("status").value;
+        console.log(data);
+        updateData(id);
+      });
+      async function updateData(id) {
+        console.log(id);
+        if (confirm("You want to update data?")) {
+          await fetch(
+            "https://gorest.co.in/public/v2/users/" +
+              id +
+              "?access-token=3b409f6ceb53d42bde33208969d9ca649abcfe16d7942a2adacbb42bb2100f8c",
+            {
+              method: "PUT",
+              body: JSON.stringify(data),
+              headers: {
+                "content-type": "application/json;json; charset=UTF-8",
+                Authorization: "Bearer",
+              },
+            }
+          )
+            .then((res) => res.text()) // or res.json()
+            .then((res) => alert("user data updated"));
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+        
+    <meta charset="UTF-8"/>
+        
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+    <title>pagination</title>
+        
+     <style>body { 
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana,f; 
+        } 
+         
+        h1 { 
+         text-align: center;
+        } 
+         
+        .container{ 
+        width: 100%; 
+        } 
+         
+        .card { 
+        width:80%; 
+        max-width:500px; 
+        background-color: blue; 
+       padding: 20px 20px; 
+        border-radius: 10px; 
+        border: 1px solid white; 
+        font-weight: 400; 
+        margin: 0 auto; 
+        margin-bottom: 10px; 
+        } 
+         
+        .head { 
+        display: nline-flex; 
+        width:100%; 
+        background-color:black; 
+        border-radius:10px; 
+        padding:10px; 
+        } 
+         
+        .name { 
+        width:90%; 
+       color:white; 
+        font-weight: 500; 
+        } 
+         
+        .status { 
+        width:10%; 
+        border-radius:50%; 
+        } 
+        .active{ 
+        background-color: green; 
+        } 
+        .inactive{ 
+        background-color: red; 
+        } 
+        .pagination{ 
+        display: flex; 
+        justify-content: center; 
+        }
+        </style>
+  </head>
+
+  <body>
+        
+    <h1>USER DATA</h1>
+        
+    <div class="container">
+              
+      <div class="card">
+                    
+        <div class="head">
+                          
+          <div class="name"></div>
+                          
+          <div class="status"></div>
+                      
+        </div>
+                    
+        <p class="id"></p>
+                    
+        <p class="email"></p>
+                    
+        <p class="gender"></p>
+                
+      </div>
+              
+      <div class="card">
+                    
+        <div class="head">
+                          
+          <div class="name"></div>
+                          
+          <div class="status"></div>
+                      
+        </div>
+                    
+        <p class="id"></p>
+                    
+        <p class="email"></p>
+                    
+        <p class="gender"></p>
+                
+      </div>
+              
+      <div class="card">
+                    
+        <div class="head">
+                          
+          <div class="name"></div>
+                          
+          <div class="status"></div>
+                      
+        </div>
+                    
+        <p class="id"></p>
+                    
+        <p class="email"></p>
+                    
+        <p class="gender"></p>
+                
+      </div>
+              
+      <div class="card">
+                    
+        <div class="head">
+                          
+          <div class="name"></div>
+                          
+          <div class="status"></div>
+                      
+        </div>
+                    
+        <p class="id"></p>
+                    
+        <p class="email"></p>
+                    
+        <p class="gender"></p>
+                
+      </div>
+              
+      <div class="card">
+                    
+        <div class="head">
+                          
+          <div class="name"></div>
+                          
+          <div class="status"></div>
+                      
+        </div>
+                    
+        <p class="id"></p>
+                    
+        <p class="email"></p>
+                    
+        <p class="gender"></p>
+                
+      </div>
+          
+    </div>
+        
+    <div class="pagination">
+              <button onclick="prevData()">PREV</button>
+              <button onclick="nextData()">NEXT</button>
+          
+    </div>
+  </body>
+  <script>
+    var data = 1;
+    let names = document.querySelectorAll(".name");
+    let ids = document.querySelectorAll(".id");
+    let emails = document.querySelectorAll(".email");
+    let genders = document.querySelectorAll(".gender");
+    let status = document.querySelectorAll(".status");
+    function prevData() {
+      if (data > 1) {
+        data = data - 4;
+      }
+      goREST();
+    }
+    function nextData() {
+      if (data < 100) {
+        data = data + 4;
+      }
+      goREST();
+    }
+    async function goREST() {
+      let response = await fetch(
+        "https://gorest.co.in/public/v2/users?page=" +
+          data +
+          "&per_page=" +
+          data +
+          4
+      );
+      let json = await response.json();
+      for (let i = 0; 1 < names.length; i++) {
+        names[i].innerText = json[i].name;
+        ids[i].innerText = json[i].id;
+        emails[i].innerText = json[i].email;
+        genders[i].innerText = json[i].gender;
+        status[i].classList.add(json[i].status);
+      }
+    }
+    goREST();
+  </script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function retrieve() {
+        return JSON.parse(sessionStorage.getItem("item"));
+      }
+      var id = retrieve();
+
+      async function apiCall() {
+        let response = await fetch(
+          "https://gorest.co.in/public/v2/users?access-token=3b409f6ceb53d42bde33208969d9ca649abcfe16d7942a2adacbb42bb2100f8c"
+        );
+        let commits = await response.text();
+        var result = commits;
+        alert(result[1]);
+      }
+      apiCall();
+    </script>
+  </body>
+</html>
