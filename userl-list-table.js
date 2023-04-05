@@ -2,7 +2,7 @@ var data = 1;
 let names = document.querySelectorAll(".name");
 let emails = document.querySelectorAll(".email");
 let genders = document.querySelectorAll(".gender");
-let status = document.querySelectorAll(".status");
+let statuss = document.querySelectorAll(".status");
 function prevData() {
   console.log("hello");
   if (data > 1) {
@@ -11,7 +11,7 @@ function prevData() {
   goREST();
 }
 function nextData() {
-  if (data < 100) {
+  if (data < 10) {
     data = data + 4;
   }
   goREST();
@@ -26,6 +26,7 @@ async function goREST() {
     names[i].innerText = json[i].name;
     emails[i].innerText = json[i].email;
     genders[i].innerText = json[i].gender;
+    statuss[i].innerText   = json[i].status;
     
   }
 }
@@ -38,12 +39,12 @@ async function apiCall() {
   );
   let commits = await response.json();
 
-  var result = commits;
+  var result = commits.slice();
 
   if (result.length > 0) {
     var temp = "";
     result.forEach((element) => {
-      temp += "<tr>";
+      temp += "<tr class='tr'>";
       temp += "<td class='name'>" + element.name + "</td>";
       temp += "<td class='gender'>" + element.gender + "</td>";
       temp += "<td class='email'>" + element.email + "</td>";
@@ -61,7 +62,6 @@ async function apiCall() {
 apiCall();
 
 const storedItem = [];
-
 function store(input) {
   console.log(input);
   storedItem.splice(0, storedItem.length);
@@ -81,7 +81,13 @@ async function deleteData(id) {
     })
       .then((res) => res.text()) // or res.json()
       .then((res) => alert("user data deleted"));
+      window.location.reload();
+
   }
+
+   else {
+    alert("canceled")
+   }
 }
 //above code is to delete the user data and show it in alert
 const item = [];
@@ -91,4 +97,7 @@ function viewUser(input) {
   item.push(input);
   sessionStorage.setItem("item", JSON.stringify(item));
   console.log(item);
+  alert("The ID of the User is " + item);
 }
+
+//above code will show the id of the user-data

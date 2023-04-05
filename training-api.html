@@ -48,7 +48,7 @@
         display: inline-flex;
       }
       .footer-link {
-        margin-left: 185px;
+        margin-left: 160px;
         font-size: 15px;
       }
       button {
@@ -56,6 +56,18 @@
         outline: none;
         font-size: 15px;
       } 
+
+  .dark-mode {
+  background-color: black;
+  color: white;
+}
+.zoom:hover {
+  background-color: #ff0000;
+  border-color: red;
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
     </style>
   </head>
   <body>
@@ -63,21 +75,27 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
       crossorigin="anonymous"
-    ></script>
+    ></script>    
+<script>
+  function darkMode() {
+     var element = document.body;
+     element.classList.toggle("dark-mode");
+  }
+  </script>
     <div class="container-fluid">
       <div class="row">
-        <div class="col w-50% vh-100">
+        <div class="col w-50% vh-100 ">
           <div class="mx-auto col-10 col-md-8 col-lg-6">
-            <form>
+            <form action="user-list-table.html">
               <div class="form-group text-center">
                 <p class="ng-#181C32 fw-bold sign-in">Sign In</p>
                 <p class="text-black-50 mt-0 ">Your Social Campaigns</p>
-                <label for="exampleInputEmail1"></label>
+                <label for="exampleInputEmail1" ></label>
                 <input
                   type="email"
                   class="form-control"
                   id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
+                   
                   placeholder="Email"
                   required
                 />
@@ -89,7 +107,7 @@
                   class="form-control"
                   id="exampleInputPassword1"
                   placeholder="Password"
-                  pattern="[0-9]*"
+                   
                   inputmode="numeric"
                   required
                    
@@ -99,25 +117,27 @@
                 <a href="#" class="txt-primary mt-5 text-center">Forgot Password ?</a>
               </div>
               <div class="mb-4">
-                <a href = "user-list-table.html" type="submit" class="btn btn-primary col-12 form-control">
-                  Sign In
-                </a>
+                <input  type="submit" class="btn btn-primary col-12 form-control zoom" value=" Sign In">
+                 
+                
               </div>
               <div>
                 <p class="text-black-50 text-center">
                   Not a Member Yet? <a href="#">Sign Up</a>
                 </p>
+  
+
               </div>
             </form>
-            <footer>
+                          <button onclick="darkMode()">Toggle dark mode</button><footer>
                 <div class="footer-nav">
-                    <button>
-                      <img class="language" src="/united-kingdom.png">English</img>
+                    <button class="btn ">
+                      <img class="language" src="united-kingdom.png">English</img>
                     </button>
                     <div class="footer-link">
-                      <a   href="#">Terms</a>
-                      <a   href="#">Plans</a>
-                      <a  href="#">Contact Us</a>
+                      <a   href="https://www.crisil.com/en/home/website-terms-of-use.html">Terms</a>
+                      <a   href="https://unlimitedwebhosting.co.in/web-hosting/?gclid=Cj0KCQjwla-hBhD7ARIsAM9tQKuiRyBja55zdZ8L6EUz8G9fZzdcoFtVWqi2RSRvwZYfIkHGwhQcWB4aAiKHEALw_wcB">Plans</a>
+                      <a  href="https://temp-mail.org/en/contact">Contact Us</a>
                     </div>
                 </div>
             </footer>

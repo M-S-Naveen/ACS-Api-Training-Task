@@ -91,16 +91,20 @@
                     placeholder="Full Name"
                     name="fullName"
                     disabled
-                /></label>
+                />
+              </label>
                 <label class="form-label" for="gender"
                   >Gender
-                  <input
+                  <select
                     type="text"
                     class="form-control"
                     id="gender"
                     placeholder="Phone Number"
-                    required
-                /></label>
+                    required>
+                  <option value="male">male</option>
+                  <option value="female">female</option>
+                </select>
+                </label>
                 <p class="text-secondary mt-0 mx-4">
                   A block of help text that breaks onto a new line and beyond
                   one line.
@@ -118,13 +122,15 @@
                 /></label>
                 <label class="form-label" for="status"
                   >Status
-                  <input
+                  <select
                     type="text"
                     class="form-control"
                     id="status"
                     placeholder="Status"
-                    required
-                /></label>
+                    required>
+                    <option value="active">active</option>
+                    <option value="inactive">inactive</option></select>
+</label>
                 <br />
                 <button
                   type="submit"

@@ -29,6 +29,22 @@
         width: 100%;
         color: #ffffff;
       }
+      button:hover {
+
+        transform: scale(1.3); 
+        text-transform: uppercase;
+        font-weight: bolder;
+
+      }
+      i:hover {
+        transform: scale(1.5); 
+        transition: 0.5s;
+        text-transform: uppercase;
+      }
+    tr:hover {
+      background: black !important;
+      background-color: #FFFF00 !important;
+    }
     </style>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
@@ -59,13 +75,20 @@
       crossorigin="anonymous"
     ></script>
     <script src="userl-list-table.js"></script>
-    <script src="userlistjs.js"></script>
     <script>
+      $(document).ready(function(){
+        $('#myTable').bootstrapTable({
+          sortable: true
+        });
+      });
+    </script>
+    <script>
+      //below code is to search by name
       function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
+        let input, filter, table, tr, td, i, txtValue;
+        input  = document.getElementById("myInput");
         filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
+        table  = document.getElementById("myTable");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
           td = tr[i].getElementsByTagName("td")[0];
@@ -80,7 +103,7 @@
         }
       }
     </script>
-    <script src="userlistjs.js"></script>
+    <!-- <script src="userlistjs.js"></script> -->
 
     <div class="container-fluid">
       <div class="row">
@@ -94,7 +117,7 @@
               User List
             </button>
           </div>
-        </div>
+        </div>                                   
         <div class="col-10">
           <div>
             <a
@@ -122,9 +145,7 @@
                 <th data-sortable="true" class="bg-dark" scope="col">Gender</th>
                 <th data-sortable="true" class="bg-dark" scope="col">Email</th>
                 <th data-sortable="true" class="bg-dark" scope="col">Status</th>
-                <th data-sortable="true" class="bg-dark" scope="col">
-                  Actions
-                </th>
+                <th data-sortable="true" class="bg-dark" scope="col">Actions</th>
               </tr>
             </thead>
             <tbody id="data"></tbody>
@@ -133,10 +154,7 @@
                     <button class="btn btn-light" onclick="prevData()">
               Previous
             </button>
-            <button class="btn btn-light" onclick="nextData()">Next</button>
-            
-            <!-- <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
-                
+            <button class="btn btn-light" onclick="nextData()">Next</button>  
           </div>
         </div>
       </div>
