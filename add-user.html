@@ -146,11 +146,9 @@
       </div>
     </div>
     <script>
-      // code for adding first and last name into full name 
       const firstNameInput = document.getElementById("firstName");
       const lastNameInput = document.getElementById("lastName");
       const fullNameInput = document.getElementById("fullName");
-
       function updateFullName() {
         const firstName = firstNameInput.value;
         const lastName = lastNameInput.value;
@@ -176,13 +174,14 @@
           "https://gorest.co.in/public/v2/users?access-token=3b409f6ceb53d42bde33208969d9ca649abcfe16d7942a2adacbb42bb2100f8c",
           {
             method: "POST",
+            //POST method adds new user datas to API
             body: JSON.stringify(data),
             headers: {
               "content-type": "application/json;json; charset=UTF-8",
               Authorization: "Bearer",
             },
           }
-        );
+          ,alert("New User Data added succesfully"));
         // .then(response => alert(response.message)
         // );
       });

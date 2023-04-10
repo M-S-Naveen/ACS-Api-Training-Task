@@ -162,12 +162,16 @@
 
       firstNameInput.addEventListener("input", updateFullName);
       lastNameInput.addEventListener("input", updateFullName);
-     // following code is to update the user data
+ 
       function retrieve() {
         return JSON.parse(sessionStorage.getItem("storedItem"));
       }
-      var id = retrieve();
+      var id=[];
+      id.push(retrieve());
       console.log(id);
+
+    
+
       btn.addEventListener("click", function () {
         console.log("hello");
         data.name = document.getElementById("fullName").value;
@@ -179,12 +183,13 @@
       });
       async function updateData(id) {
         console.log(id);
-        if (confirm("You want to update data?")) {
+        if (confirm("You want to update the data?")) {
           await fetch(
             "https://gorest.co.in/public/v2/users/" +
               id +
               "?access-token=3b409f6ceb53d42bde33208969d9ca649abcfe16d7942a2adacbb42bb2100f8c",
             {
+              //PUT method updates all user data
               method: "PUT",
               body: JSON.stringify(data),
               headers: {
@@ -195,8 +200,11 @@
           )
             .then((res) => res.text()) // or res.json()
             .then((res) => alert("user data updated"));
+             
         }
       }
+
+
     </script>
   </body>
 </html>

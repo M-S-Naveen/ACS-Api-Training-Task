@@ -1,0 +1,56 @@
+      /* @font-face {
+        font-family: Inter;
+        src: url(Inter-VariableFont_slnt\,wght.ttf);
+      }
+      body {
+        font-family: Inter; */
+      /* } */
+      .sign-in {
+        font-size: 23px;
+      }
+      a {
+        text-decoration: none;
+      }
+      form {
+        margin-top: 45%;
+      }
+      .img {
+        margin-top: 25%;
+        margin-left: 20%;
+      }
+      .caption {
+        margin-left: 23%;
+        width: 500px;
+      }
+      .line {
+        font-size: 29.25px;
+      }
+      .language {
+        height: 20px;
+        width: 20px;
+        
+      }
+      .footer-nav {
+        margin-top: 150px;
+        display: inline-flex;
+      }
+      .footer-link {
+        margin-left: 160px;
+        font-size: 15px;
+      }
+      button {
+        border: none;
+        outline: none;
+        font-size: 15px;
+      } 
+
+  .dark-mode {
+  background-color: black;
+  color: white;
+}
+.zoom:hover {
+  background-color: #ff0000;
+  border-color: #ff0000;
+  text-transform: uppercase;
+  font-weight: bolder;
+ }
